@@ -1,7 +1,5 @@
-*.pyc
-*~
 __pycache__
-my1venv
+/my1venv
 mydatabase
 /static
 .DS_Store
