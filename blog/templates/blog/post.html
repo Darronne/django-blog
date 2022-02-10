@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block content %}
+    {% if post.title %}
+        <div class="post">
+            <div class="date">
+                <p>Опубликовано: {{ post.published_date }}</p>
+            </div>
+            <img src="{{ post.img.url }}" alt="" height="250" width="400">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.text }}</p>
+            
+        </div>
+    {% endif %}
+{% endblock %}

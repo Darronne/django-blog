@@ -1,0 +1,52 @@
+{% load static %}
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        
+    </head>
+    <body>
+
+        <div class="page-header">
+            <h1><a href="/">Django news</a></h1>
+        </div>
+        
+        <div id="sidebar">
+            {% block sidebar %}
+            <nav>
+			    <ul>
+			        <li><a href="/">Главная</a></li>
+                    <li><a href="#">Разделы</a>
+                        <ul>
+			            {% for p in parts %}
+                            <li><a href="/part/{{ p.url }}">{{ p.title }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </li>
+                    <li><a href="#">Области</a>
+                        <ul>
+			            {% for r in regions %}
+                            <li><a href="/region/{{ r.url }}">{{ r.title }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </li>
+			    </ul>
+			</nav>
+            {% endblock %}
+        </div>
+
+        <div class="content">
+            <div class="center">
+                <div class="col-md-8 cont">
+                    {% block content %}
+                        
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>
