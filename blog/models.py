@@ -32,7 +32,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    url = models.CharField(max_length=200, default='')
+    url = models.SlugField(unique=True, max_length=200)
     img = models.ImageField(upload_to='img/')
 
     def publish(self):

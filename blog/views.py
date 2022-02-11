@@ -3,7 +3,6 @@ from django.utils import timezone
 from .models import Post, Region, Partition
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-
 def post_list(request):
     page = 1
 
@@ -23,14 +22,14 @@ def post_list(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     
-    return render(request, 'post_list.html', {'posts': posts, 'parts': parts, 'regions': regions})
+    return render(request, 'blog/post_list.html', {'posts': posts, 'parts': parts, 'regions': regions})
 
 def post(request, post_url):
     post = Post.objects.get(url=post_url)
     parts = Partition.objects.all()
     regions = Region.objects.all()
 
-    return render(request, 'post.html', {'post': post, 'parts': parts, 'regions': regions})
+    return render(request, 'blog/post.html', {'post': post, 'parts': parts, 'regions': regions})
 
 def region(request, region_url):
     page = 1
@@ -53,7 +52,7 @@ def region(request, region_url):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'region.html', {'posts': posts, 'parts': parts, 'region': region, 'regions': regions})
+    return render(request, 'blog/region.html', {'posts': posts, 'parts': parts, 'region': region, 'regions': regions})
 
 def part(request, part_url):
     page = 1
@@ -76,4 +75,4 @@ def part(request, part_url):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'part.html', {'posts': posts, 'parts': parts, 'part': part, 'regions': regions})
+    return render(request, 'blog/part.html', {'posts': posts, 'parts': parts, 'part': part, 'regions': regions})

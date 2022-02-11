@@ -1,3 +1,5 @@
 __pycache__
 /my1venv
 .DS_Store
+Dockerfile
+docker-compose.yml
